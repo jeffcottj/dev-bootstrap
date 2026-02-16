@@ -25,7 +25,7 @@ Every command that should be available after a full bootstrap. Used by `scripts/
 | `gh` | gh |
 | `az` | azure-cli |
 | `code` | code |
-| `google-chrome-stable` | google-chrome-stable |
+| `google-chrome-stable` | google-chrome-stable (amd64 only) |
 | `flatpak` | flatpak |
 
 ## From pipx

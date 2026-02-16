@@ -19,6 +19,8 @@ if ! sudo -v; then
   exit 1
 fi
 
+ARCH="$(dpkg --print-architecture)"
+
 echo "==> Updating base system"
 sudo apt update
 sudo apt upgrade -y
@@ -98,30 +100,40 @@ fi
 
 echo "==> Adding VS Code repo"
 if [[ ! -f /etc/apt/sources.list.d/vscode.sources ]]; then
-  sudo tee /etc/apt/sources.list.d/vscode.sources > /dev/null <<'EOF'
+  sudo tee /etc/apt/sources.list.d/vscode.sources > /dev/null <<EOF
 Types: deb
 URIs: https://packages.microsoft.com/repos/code
 Suites: stable
 Components: main
-Architectures: amd64
+Architectures: ${ARCH}
 Signed-By: /etc/apt/keyrings/microsoft.gpg
 EOF
 fi
 
-echo "==> Adding Google Chrome repo"
-if [[ ! -f /etc/apt/sources.list.d/google-chrome.list ]]; then
-  sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null <<'EOF'
+if [[ "$ARCH" == "amd64" ]]; then
+  echo "==> Adding Google Linux signing key"
+  if [[ ! -f /etc/apt/keyrings/google-linux.gpg ]]; then
+    curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor -o /etc/apt/keyrings/google-linux.gpg
+    sudo chmod a+r /etc/apt/keyrings/google-linux.gpg
+  fi
+
+  echo "==> Adding Google Chrome repo"
+  if [[ ! -f /etc/apt/sources.list.d/google-chrome.list ]]; then
+    sudo tee /etc/apt/sources.list.d/google-chrome.list > /dev/null <<'EOF'
 ### THIS FILE IS AUTOMATICALLY CONFIGURED ###
 # You may comment out this entry, but any other modifications may be lost.
-deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main
+deb [arch=amd64 signed-by=/etc/apt/keyrings/google-linux.gpg] https://dl.google.com/linux/chrome/deb/ stable main
 EOF
+  fi
+else
+  echo "==> Skipping Google Chrome repo: architecture '$ARCH' is not supported by google-chrome-stable"
 fi
 
 echo "==> Updating package lists for newly added repos"
 sudo apt update
 
-echo "==> Installing Docker (official packages) + Azure CLI + VS Code + Chrome + GH CLI"
-sudo apt install -y \
+echo "==> Installing Docker (official packages) + Azure CLI + VS Code + GH CLI"
+packages=(
   docker-ce \
   docker-ce-cli \
   containerd.io \
@@ -129,8 +141,14 @@ sudo apt install -y \
   docker-compose-plugin \
   azure-cli \
   code \
-  google-chrome-stable \
   gh
+)
+
+if [[ "$ARCH" == "amd64" ]]; then
+  packages+=(google-chrome-stable)
+fi
+
+sudo apt install -y "${packages[@]}"
 
 echo "==> Enabling Docker services"
 sudo systemctl enable --now containerd

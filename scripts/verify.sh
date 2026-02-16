@@ -8,6 +8,7 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 errors=0
+ARCH="$(dpkg --print-architecture)"
 
 check_command() {
   local cmd="$1"
@@ -42,7 +43,12 @@ check_symlink() {
 echo "=== Command checks ==="
 
 # apt packages
-for cmd in git curl wget jq rg fdfind fzf tmux tree htop batcat make zsh python3 pipx docker gh az code google-chrome-stable flatpak; do
+apt_commands=(git curl wget jq rg fdfind fzf tmux tree htop batcat make zsh python3 pipx docker gh az code flatpak)
+if [[ "$ARCH" == "amd64" ]]; then
+  apt_commands+=(google-chrome-stable)
+fi
+
+for cmd in "${apt_commands[@]}"; do
   check_command "$cmd"
 done
 

@@ -11,7 +11,7 @@ Opinionated but minimal dev workstation bootstrap for Ubuntu 24.04 (noble).
 - **Python**: python3-venv, python3-pip, pipx
 - **Security/power**: UFW firewall, unattended-upgrades, TLP
 - **Docker Engine**: official repo with buildx + compose plugin
-- **Dev tools**: GitHub CLI (gh), Azure CLI (az), VS Code, Google Chrome
+- **Dev tools**: GitHub CLI (gh), Azure CLI (az), VS Code, Google Chrome (amd64 only)
 
 ### User-level (no sudo)
 
@@ -72,6 +72,7 @@ The bootstrap is idempotent:
 ## Docker notes
 
 - Docker is installed from the official Docker repo (not Ubuntu's `docker.io`)
+- Google Chrome is installed from Google's apt repo only on `amd64` (it is skipped on other CPU architectures)
 - Your user is added to the `docker` group (requires logout/login to take effect)
 - Includes buildx and compose plugin (`docker compose`, not `docker-compose`)
 
@@ -91,7 +92,7 @@ This also configures the git credential helper for HTTPS.
 
 Two verification scripts are provided:
 
-- **`scripts/verify.sh`** — checks all expected commands exist, dotfile symlinks are correct, git identity is set, and default shell is zsh
+- **`scripts/verify.sh`** — checks all expected commands exist (including architecture-specific ones), dotfile symlinks are correct, git identity is set, and default shell is zsh
 - **`scripts/shell-parity-check.sh`** — verifies that `~/.local/bin` is on PATH in both bash and zsh, and that user-installed commands resolve identically
 
 ## Customization

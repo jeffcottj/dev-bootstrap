@@ -18,8 +18,8 @@ What `dev-bootstrap` does today on a fresh Ubuntu 24.04 install.
 5. Enables TLP laptop power management
 6. Adds Docker official apt repo (key + sources list)
 7. Adds Microsoft apt repo (key + sources for Azure CLI and VS Code)
-8. Adds Google Chrome apt repo
-9. Installs: `docker-ce`, `docker-ce-cli`, `containerd.io`, `docker-buildx-plugin`, `docker-compose-plugin`, `azure-cli`, `code`, `google-chrome-stable`, `gh`
+8. Adds Google Chrome apt repo (amd64 only)
+9. Installs: `docker-ce`, `docker-ce-cli`, `containerd.io`, `docker-buildx-plugin`, `docker-compose-plugin`, `azure-cli`, `code`, `gh`, and `google-chrome-stable` (amd64 only)
 10. Enables Docker services (`containerd`, `docker`, `docker.socket`)
 11. Adds current user to `docker` group
 
