@@ -58,6 +58,7 @@ sudo apt install -y \
   zsh-syntax-highlighting
 
 echo "==> Enabling firewall (UFW)"
+sudo ufw allow ssh
 sudo ufw --force enable
 
 echo "==> Enabling unattended upgrades"
