@@ -48,7 +48,7 @@ echo "==> Setting default shell to zsh"
 if [[ "$(basename "$SHELL")" == "zsh" ]]; then
   echo "Default shell is already zsh."
 else
-  if chsh -s "$(which zsh)" 2>/dev/null; then
+  if sudo chsh -s "$(which zsh)" "$USER" 2>/dev/null; then
     echo "Default shell changed to zsh. Log out and back in for it to take effect."
   else
     echo "WARNING: chsh failed (this is normal in containers/CI). Change your shell manually:"
