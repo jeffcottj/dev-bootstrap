@@ -6,7 +6,14 @@
       "Bash(shellcheck:*)",
       "Bash(sudo apt-get install:*)",
       "Bash(bash -n scripts/*.sh)",
-      "Bash(echo:*)"
+      "Bash(echo:*)",
+      "Bash(bash -n:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(zsh -n /home/john/repos/dev-bootstrap/zsh/zshrc)",
+      "Bash(gh workflow run:*)",
+      "Bash(gh run:*)"
     ]
   }
 }
