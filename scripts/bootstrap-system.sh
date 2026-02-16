@@ -88,12 +88,12 @@ fi
 
 echo "==> Adding Azure CLI repo"
 if [[ ! -f /etc/apt/sources.list.d/azure-cli.sources ]]; then
-  sudo tee /etc/apt/sources.list.d/azure-cli.sources > /dev/null <<'EOF'
+  sudo tee /etc/apt/sources.list.d/azure-cli.sources > /dev/null <<EOF
 Types: deb
 URIs: https://packages.microsoft.com/repos/azure-cli/
 Suites: noble
 Components: main
-Architectures: amd64
+Architectures: ${ARCH}
 Signed-by: /etc/apt/keyrings/microsoft.gpg
 EOF
 fi
