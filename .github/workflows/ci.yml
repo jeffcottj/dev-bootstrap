@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  shellcheck:
+    name: ShellCheck
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install shellcheck
+        run: sudo apt-get install -y shellcheck
+      - name: Run shellcheck on all scripts
+        run: shellcheck scripts/*.sh
+
+  bootstrap:
+    name: Full Bootstrap
+    runs-on: ubuntu-24.04
+    needs: shellcheck
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Pre-seed git identity (avoid interactive prompt)
+        run: printf '[user]\n\tname = CI Bot\n\temail = ci@example.com\n' > ~/.gitconfig.local
+
+      - name: Run full bootstrap
+        run: ./scripts/bootstrap-ubuntu-24.04.sh
+
+      - name: Run verification
+        run: ./scripts/verify.sh
+
+      - name: Run shell parity check
+        run: ./scripts/shell-parity-check.sh

@@ -1,0 +1,65 @@
+# -------------------------
+# Basic Behavior
+# -------------------------
+
+export LANG=en_US.UTF-8
+export EDITOR=nano
+
+# Better history
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_IGNORE_SPACE
+
+# Enable better completion
+autoload -Uz compinit
+compinit
+
+# Improve tab completion behavior
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# Allow cd without typing cd
+setopt AUTO_CD
+
+# -------------------------
+# Useful Aliases (Minimal)
+# -------------------------
+
+alias ll='ls -alF'
+alias gs='git status'
+alias gp='git pull'
+alias gd='git diff'
+alias dc='docker compose'
+
+# -------------------------
+# fzf (Ctrl+R search)
+# -------------------------
+
+[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && \
+  source /usr/share/doc/fzf/examples/key-bindings.zsh
+
+[ -f /usr/share/doc/fzf/examples/completion.zsh ] && \
+  source /usr/share/doc/fzf/examples/completion.zsh
+
+# -------------------------
+# Autosuggestions + Syntax Highlighting
+# -------------------------
+
+source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# -------------------------
+# Simple Prompt
+# -------------------------
+
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' (%b)'
+setopt PROMPT_SUBST
+PROMPT='%F{cyan}%~%f%F{yellow}${vcs_info_msg_0_}%f %# '

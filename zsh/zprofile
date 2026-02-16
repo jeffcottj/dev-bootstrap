@@ -1,0 +1,4 @@
+# Source ~/.profile so zsh login shells get the same PATH as bash.
+# Ubuntu 24.04's default ~/.profile adds ~/.local/bin to PATH.
+# Using "emulate sh" ensures POSIX-style syntax is handled correctly.
+[[ -f ~/.profile ]] && emulate sh -c 'source ~/.profile'

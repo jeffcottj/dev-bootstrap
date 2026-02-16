@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(chmod:*)",
+      "Bash(shellcheck:*)",
+      "Bash(sudo apt-get install:*)",
+      "Bash(bash -n scripts/*.sh)",
+      "Bash(echo:*)"
+    ]
+  }
+}
