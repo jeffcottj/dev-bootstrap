@@ -1,0 +1,17 @@
+// Reference template: what an org-level remote config would look like.
+// Host this at https://your-org.example.com/.well-known/opencode.json
+// This file is NOT applied by opencode-apply-profile.sh.
+{
+  "mcp": {
+    "context7": {
+      "type": "remote",
+      "url": "https://mcp.context7.com/mcp",
+      "enabled": false
+    },
+    "gh_grep": {
+      "type": "remote",
+      "url": "https://mcp.grep.app",
+      "enabled": false
+    }
+  }
+}

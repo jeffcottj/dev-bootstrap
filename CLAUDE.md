@@ -25,6 +25,12 @@ bash -n scripts/*.sh
 # Post-bootstrap verification
 ./scripts/verify.sh
 ./scripts/shell-parity-check.sh
+
+# Apply recommended OpenCode config (global)
+./opencode/scripts/opencode-apply-profile.sh recommended
+
+# Apply minimal OpenCode config to current project
+./opencode/scripts/opencode-apply-profile.sh minimal --project
 ```
 
 ## Architecture
