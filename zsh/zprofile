@@ -2,3 +2,9 @@
 # Ubuntu 24.04's default ~/.profile adds ~/.local/bin to PATH.
 # Using "emulate sh" ensures POSIX-style syntax is handled correctly.
 [[ -f ~/.profile ]] && emulate sh -c 'source ~/.profile'
+
+# Guarantee ~/.local/bin is on PATH even if ~/.profile is missing or modified.
+# pipx, opencode, and other user tools install here.
+if [[ -d "$HOME/.local/bin" && ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+  export PATH="$HOME/.local/bin:$PATH"
+fi
