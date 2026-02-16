@@ -8,6 +8,7 @@ errors=0
 
 echo "=== PATH check: ~/.local/bin ==="
 for shell in bash zsh; do
+  # shellcheck disable=SC2016 # $PATH must expand inside the spawned shell, not here
   if $shell -lc 'echo "$PATH"' 2>/dev/null | tr ':' '\n' | grep -qx "$HOME/.local/bin"; then
     echo "  OK   $shell login shell has ~/.local/bin on PATH"
   else
