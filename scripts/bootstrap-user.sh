@@ -21,7 +21,7 @@ else
 fi
 
 echo "==> Applying dotfiles (zsh, git)"
-"$SCRIPT_DIR/apply-dotfiles.sh"
+bash "$SCRIPT_DIR/apply-dotfiles.sh"
 
 echo "==> Setting up git identity"
 if [[ -f "$HOME/.gitconfig.local" ]]; then
