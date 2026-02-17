@@ -32,11 +32,13 @@ bash -n scripts/*.sh
 **Two-phase bootstrap** orchestrated by `scripts/bootstrap-ubuntu-24.04.sh`:
 
 1. **`bootstrap-system.sh`** — apt packages, repo keys, Docker, services, UFW, TLP (requires sudo, refuses root)
-2. **`bootstrap-user.sh`** — pipx tools, OpenCode, dotfile symlinks, git identity prompt, `chsh` to zsh
+2. **`bootstrap-user.sh`** — pipx tools, OpenCode + oh-my-opencode (with smoke test), dotfile symlinks, git identity prompt, `chsh` to zsh
 
 **Dotfile symlink flow** (`apply-dotfiles.sh`): repo files are symlinked into `~/`, existing non-symlink files are backed up with timestamps. Symlinks are idempotent — re-running skips correct links.
 
 **Shell parity**: `zsh/zprofile` sources `~/.profile` via `emulate sh -c` so both bash and zsh login shells get `~/.local/bin` on PATH. The zshrc does NOT modify PATH.
+
+**Getting started**: `docs/getting-started.md` provides a jargon-free guide for non-developers — API key setup, launching OpenCode, and basic tips.
 
 **Git identity**: `git/gitconfig` uses `[include] path = ~/.gitconfig.local` — the bootstrap prompts for name/email and writes `~/.gitconfig.local` (skipped if file exists, skipped non-interactively in CI).
 

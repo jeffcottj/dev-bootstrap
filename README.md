@@ -18,7 +18,7 @@ Everything follows a "latest stable" model: nothing is version-pinned, and the s
 ### User-level (no sudo)
 
 - **pipx tools**: poetry, ruff, pre-commit
-- **OpenCode + oh-my-opencode**: OpenCode installed to `~/.local/bin`, oh-my-opencode provides batteries-included agents, MCPs, and hooks
+- **OpenCode + oh-my-opencode**: OpenCode installed to `~/.local/bin` (smoke-tested during bootstrap), oh-my-opencode provides batteries-included agents, MCPs, and hooks
 - **Dotfiles**: zprofile, zshrc, gitconfig symlinked from this repo
 - **Git identity**: interactive prompt writes `~/.gitconfig.local` (skipped if file exists)
 - **Default shell**: changed to zsh via `chsh`
@@ -37,6 +37,10 @@ Log out and back in, then verify:
 ./scripts/verify.sh
 ./scripts/shell-parity-check.sh
 ```
+
+## Getting started after install
+
+See **[docs/getting-started.md](docs/getting-started.md)** for a short walkthrough: set up your AI provider key, launch OpenCode, and start building with natural language.
 
 ## Phase flags
 
@@ -124,6 +128,7 @@ git/
   gitconfig                    # shared git config (includes ~/.gitconfig.local)
 
 docs/
+  getting-started.md           # non-dev quick start guide
   current-behavior.md          # documents what the repo does
   expected-commands.md          # lists every expected command
   shell-parity.md              # defines the bash/zsh parity contract

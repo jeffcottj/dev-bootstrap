@@ -61,6 +61,23 @@ done
 check_command opencode
 
 echo ""
+echo "=== OpenCode + oh-my-opencode checks ==="
+
+# OMO installed check
+if bunx oh-my-opencode --version &>/dev/null; then
+  echo "  OK   oh-my-opencode ($(bunx oh-my-opencode --version 2>/dev/null))"
+else
+  echo "  WARN oh-my-opencode — not detected (run: bunx oh-my-opencode install)"
+fi
+
+# Auth configured check
+if opencode auth list &>/dev/null 2>&1; then
+  echo "  OK   OpenCode auth configured"
+else
+  echo "  WARN OpenCode auth not configured (run: opencode auth login)"
+fi
+
+echo ""
 echo "=== Dotfile symlink checks ==="
 check_symlink "$HOME/.zprofile" "$REPO_ROOT/zsh/zprofile"
 check_symlink "$HOME/.zshrc" "$REPO_ROOT/zsh/zshrc"

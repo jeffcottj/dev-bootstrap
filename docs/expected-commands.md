@@ -40,4 +40,11 @@ Every command that should be available after a full bootstrap. Used by `scripts/
 
 | Command | Install method |
 |---------|---------------|
-| `opencode` | opencode.ai install script -> `~/.local/bin` |
+| `opencode` | opencode.ai install script -> `~/.local/bin` (smoke-tested during bootstrap) |
+
+## Verified but not required (warnings only)
+
+| Check | How |
+|-------|-----|
+| oh-my-opencode | `bunx oh-my-opencode --version` |
+| OpenCode auth | `opencode auth list` |

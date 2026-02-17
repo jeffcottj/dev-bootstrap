@@ -28,6 +28,13 @@ else
   echo "oh-my-opencode installed. Run 'opencode auth login' to configure API keys."
 fi
 
+echo "==> Smoke-testing OpenCode"
+if opencode --version &>/dev/null; then
+  echo "  OK   opencode $(opencode --version 2>/dev/null)"
+else
+  echo "  WARN opencode installed but failed to run"
+fi
+
 echo "==> Applying dotfiles (zsh, git)"
 bash "$SCRIPT_DIR/apply-dotfiles.sh"
 
