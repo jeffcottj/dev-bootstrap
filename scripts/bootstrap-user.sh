@@ -20,6 +20,14 @@ else
   XDG_BIN_DIR="$HOME/.local/bin" curl -fsSL https://opencode.ai/install | bash
 fi
 
+echo "==> Installing oh-my-opencode"
+if bunx oh-my-opencode --version &>/dev/null; then
+  echo "oh-my-opencode already installed."
+else
+  bunx oh-my-opencode install --no-tui --claude=no --gemini=no --copilot=no --openai=no
+  echo "oh-my-opencode installed. Run 'opencode auth login' to configure API keys."
+fi
+
 echo "==> Applying dotfiles (zsh, git)"
 bash "$SCRIPT_DIR/apply-dotfiles.sh"
 

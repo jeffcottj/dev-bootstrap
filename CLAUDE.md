@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repo Does
 
-Bootstrap scripts for an Ubuntu 24.04 dev workstation. Installs system packages, Docker, dev tools (gh, az, code), pipx tools (poetry, ruff, pre-commit), OpenCode, and configures zsh with dotfile symlinks. Targets physical machines and CI — not containers in production.
+Bootstrap scripts for an Ubuntu 24.04 dev workstation. Installs system packages, Docker, dev tools (gh, az, code), pipx tools (poetry, ruff, pre-commit), OpenCode with oh-my-opencode, and configures zsh with dotfile symlinks. Targets physical machines and CI — not containers in production.
 
 ## Common Commands
 
@@ -25,12 +25,6 @@ bash -n scripts/*.sh
 # Post-bootstrap verification
 ./scripts/verify.sh
 ./scripts/shell-parity-check.sh
-
-# Apply recommended OpenCode config (global)
-./opencode/scripts/opencode-apply-profile.sh recommended
-
-# Apply minimal OpenCode config to current project
-./opencode/scripts/opencode-apply-profile.sh minimal --project
 ```
 
 ## Architecture

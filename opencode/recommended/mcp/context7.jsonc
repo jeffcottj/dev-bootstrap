@@ -1,7 +1,0 @@
-{
-  // Context7 — resolves library docs for version-specific answers
-  "context7": {
-    "type": "remote",
-    "url": "https://mcp.context7.com/mcp"
-  }
-}
