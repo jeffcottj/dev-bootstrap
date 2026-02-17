@@ -1,6 +1,8 @@
 # dev-bootstrap (Ubuntu 24.04)
 
-Opinionated but minimal dev workstation bootstrap for Ubuntu 24.04 (noble).
+One-command setup for the most effective vibe coding environment available on Ubuntu 24.04. Puts non-developers behind the wheel of [OpenCode](https://opencode.ai) + [oh-my-opencode](https://github.com/nichochar/oh-my-opencode) for rapid natural language prototyping — no prior dev experience required.
+
+Everything follows a "latest stable" model: nothing is version-pinned, and the specific tools and plugins included are subject to change as better options become available.
 
 ## What it does
 
@@ -16,7 +18,7 @@ Opinionated but minimal dev workstation bootstrap for Ubuntu 24.04 (noble).
 ### User-level (no sudo)
 
 - **pipx tools**: poetry, ruff, pre-commit
-- **OpenCode**: installed to `~/.local/bin`
+- **OpenCode + oh-my-opencode**: OpenCode installed to `~/.local/bin`, oh-my-opencode provides batteries-included agents, MCPs, and hooks
 - **Dotfiles**: zprofile, zshrc, gitconfig symlinked from this repo
 - **Git identity**: interactive prompt writes `~/.gitconfig.local` (skipped if file exists)
 - **Default shell**: changed to zsh via `chsh`
@@ -99,6 +101,7 @@ Two verification scripts are provided:
 
 - **Additional apt packages**: add them to `scripts/bootstrap-system.sh`
 - **Additional pipx tools**: add them to `scripts/bootstrap-user.sh`
+- **OpenCode plugins**: oh-my-opencode manages agents, MCPs, and hooks — run `bunx oh-my-opencode` to reconfigure
 - **Zsh config**: edit `zsh/zshrc` (aliases, prompt, plugins)
 - **Git config**: edit `git/gitconfig` for shared settings; use `~/.gitconfig.local` for per-machine settings (identity, signing key)
 
