@@ -8,3 +8,8 @@
 if [[ -d "$HOME/.local/bin" && ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
   export PATH="$HOME/.local/bin:$PATH"
 fi
+
+# ~/.bun/bin: bun runtime used by oh-my-opencode.
+if [[ -d "$HOME/.bun/bin" && ":$PATH:" != *":$HOME/.bun/bin:"* ]]; then
+  export PATH="$HOME/.bun/bin:$PATH"
+fi
