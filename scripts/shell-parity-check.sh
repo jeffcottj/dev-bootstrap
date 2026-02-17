@@ -4,6 +4,10 @@ set -euo pipefail
 # shell-parity-check.sh — verify that bash and zsh login shells resolve
 # the same user-installed commands and share ~/.local/bin on PATH.
 
+# Ensure user-installed tools are on PATH (not inherited in CI or fresh shells)
+[[ -d "$HOME/.bun/bin" ]] && export PATH="$HOME/.bun/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
 errors=0
 
 echo "=== PATH check: ~/.local/bin ==="

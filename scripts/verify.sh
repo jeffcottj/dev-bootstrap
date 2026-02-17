@@ -7,6 +7,10 @@ set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
+# Ensure user-installed tools are on PATH (not inherited in CI or fresh shells)
+[[ -d "$HOME/.bun/bin" ]] && export PATH="$HOME/.bun/bin:$PATH"
+[[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
+
 errors=0
 ARCH="$(dpkg --print-architecture)"
 
@@ -64,9 +68,9 @@ check_command bun
 echo ""
 echo "=== OpenCode + oh-my-opencode checks ==="
 
-# OMO installed check
-if bunx oh-my-opencode --version &>/dev/null; then
-  echo "  OK   oh-my-opencode ($(bunx oh-my-opencode --version 2>/dev/null))"
+# OMO installed check — look for config files, not bunx (which runs packages ephemerally)
+if [[ -d "$HOME/.config/opencode/agents" ]]; then
+  echo "  OK   oh-my-opencode (config found in ~/.config/opencode/)"
 else
   echo "  WARN oh-my-opencode — not detected (run: bunx oh-my-opencode install)"
 fi
