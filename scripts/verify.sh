@@ -59,6 +59,7 @@ done
 
 # direct installs
 check_command opencode
+check_command bun
 
 echo ""
 echo "=== OpenCode + oh-my-opencode checks ==="
@@ -110,9 +111,24 @@ else
 fi
 
 echo ""
+echo "========================================="
 if [[ "$errors" -eq 0 ]]; then
-  echo "All checks passed."
+  if opencode auth list &>/dev/null 2>&1; then
+    echo "  Ready to vibe code!"
+    echo ""
+    echo "  Start building:  opencode"
+    echo "  Need help?       See docs/getting-started.md"
+  else
+    echo "  All tools installed. One more step:"
+    echo ""
+    echo "  Run:  opencode auth login"
+    echo "  Then: opencode"
+  fi
 else
-  echo "$errors check(s) failed."
+  echo "  Not ready yet — $errors check(s) failed above."
+  echo "  Fix the FAIL items and re-run this script."
+fi
+echo "========================================="
+if [[ "$errors" -gt 0 ]]; then
   exit 1
 fi

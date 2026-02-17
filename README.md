@@ -18,6 +18,7 @@ Everything follows a "latest stable" model: nothing is version-pinned, and the s
 ### User-level (no sudo)
 
 - **pipx tools**: poetry, ruff, pre-commit
+- **Bun**: JavaScript runtime used by oh-my-opencode
 - **OpenCode + oh-my-opencode**: OpenCode installed to `~/.local/bin` (smoke-tested during bootstrap), oh-my-opencode provides batteries-included agents, MCPs, and hooks
 - **Dotfiles**: zprofile, zshrc, gitconfig symlinked from this repo
 - **Git identity**: interactive prompt writes `~/.gitconfig.local` (skipped if file exists)
@@ -25,18 +26,19 @@ Everything follows a "latest stable" model: nothing is version-pinned, and the s
 
 ## Quick start
 
-```bash
-git clone <this-repo-url> ~/repos/dev-bootstrap
-cd ~/repos/dev-bootstrap
-./scripts/bootstrap-ubuntu-24.04.sh
-```
+If the repo is already on this machine (e.g., from a USB stick):
+
+    cd ~/repos/dev-bootstrap
+    ./scripts/bootstrap-ubuntu-24.04.sh
+
+Starting from scratch:
+
+    git clone <this-repo-url> ~/repos/dev-bootstrap && ~/repos/dev-bootstrap/scripts/bootstrap-ubuntu-24.04.sh
 
 Log out and back in, then verify:
 
-```bash
-./scripts/verify.sh
-./scripts/shell-parity-check.sh
-```
+    ./scripts/verify.sh
+    ./scripts/shell-parity-check.sh
 
 ## Getting started after install
 

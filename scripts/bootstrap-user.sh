@@ -20,6 +20,16 @@ else
   XDG_BIN_DIR="$HOME/.local/bin" curl -fsSL https://opencode.ai/install | bash
 fi
 
+echo "==> Installing Bun"
+if command -v bun &>/dev/null; then
+  echo "Bun already installed: $(bun --version)"
+else
+  curl -fsSL https://bun.sh/install | bash
+  # Source into current session so bunx is available immediately
+  export BUN_INSTALL="$HOME/.bun"
+  export PATH="$BUN_INSTALL/bin:$PATH"
+fi
+
 echo "==> Installing oh-my-opencode"
 if bunx oh-my-opencode --version &>/dev/null; then
   echo "oh-my-opencode already installed."

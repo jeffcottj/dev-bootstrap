@@ -28,9 +28,10 @@ What `dev-bootstrap` does today on a fresh Ubuntu 24.04 install.
 1. Runs `pipx ensurepath`
 2. Installs via pipx: `poetry`, `ruff`, `pre-commit`
 3. Installs OpenCode to `~/.local/bin`
-4. Installs oh-my-opencode via `bunx oh-my-opencode install`
-5. Smoke-tests OpenCode (`opencode --version`)
-6. Symlinks dotfiles:
+4. Installs Bun (JavaScript runtime required by oh-my-opencode)
+5. Installs oh-my-opencode via `bunx oh-my-opencode install`
+6. Smoke-tests OpenCode (`opencode --version`)
+7. Symlinks dotfiles:
    - `zsh/zshrc` -> `~/.zshrc`
    - `git/gitconfig` -> `~/.gitconfig`
 

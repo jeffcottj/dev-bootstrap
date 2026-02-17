@@ -32,7 +32,7 @@ bash -n scripts/*.sh
 **Two-phase bootstrap** orchestrated by `scripts/bootstrap-ubuntu-24.04.sh`:
 
 1. **`bootstrap-system.sh`** — apt packages, repo keys, Docker, services, UFW, TLP (requires sudo, refuses root)
-2. **`bootstrap-user.sh`** — pipx tools, OpenCode + oh-my-opencode (with smoke test), dotfile symlinks, git identity prompt, `chsh` to zsh
+2. **`bootstrap-user.sh`** — pipx tools, Bun, OpenCode + oh-my-opencode (with smoke test), dotfile symlinks, git identity prompt, `chsh` to zsh
 
 **Dotfile symlink flow** (`apply-dotfiles.sh`): repo files are symlinked into `~/`, existing non-symlink files are backed up with timestamps. Symlinks are idempotent — re-running skips correct links.
 
