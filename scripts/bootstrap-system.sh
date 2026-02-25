@@ -34,6 +34,7 @@ sudo apt install -y \
   wget \
   gnupg \
   software-properties-common \
+  lsb-release \
   build-essential \
   unzip \
   zip \

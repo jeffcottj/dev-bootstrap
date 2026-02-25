@@ -26,6 +26,7 @@ Every command that should be available after a full bootstrap. Used by `scripts/
 | `az` | azure-cli |
 | `code` | code |
 | `google-chrome-stable` | google-chrome-stable (amd64 only) |
+| `lsb_release` | lsb-release |
 | `flatpak` | flatpak |
 
 ## From pipx
