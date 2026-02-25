@@ -8,7 +8,7 @@ What `dev-bootstrap` does today on a fresh Ubuntu 24.04 install.
 2. Installs baseline apt packages:
    - Build tools: `build-essential`, `unzip`, `zip`
    - Networking: `apt-transport-https`, `ca-certificates`, `curl`, `wget`, `gnupg`, `software-properties-common`
-   - CLI utilities: `git`, `jq`, `ripgrep`, `fd-find`, `fzf`, `tmux`, `tree`, `htop`, `bat`, `lsb-release`
+   - CLI utilities: `git`, `jq`, `ripgrep`, `fd-find`, `fzf`, `tmux`, `tree`, `htop`, `bat`, `shellcheck`, `lsb-release`
    - Python: `python3-pip`, `python3-venv`, `pipx`
    - Desktop: `flatpak`
    - Security/power: `unattended-upgrades`, `ufw`, `tlp`

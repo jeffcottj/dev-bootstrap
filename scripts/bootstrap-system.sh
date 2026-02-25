@@ -47,6 +47,7 @@ sudo apt install -y \
   tree \
   htop \
   bat \
+  shellcheck \
   pipx \
   python3-pip \
   python3-venv \
