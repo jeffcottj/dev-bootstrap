@@ -10,7 +10,7 @@ Everything follows a "latest stable" model: nothing is version-pinned, and the s
 
 - **Base packages**: build-essential, curl, wget, git, jq, ripgrep, fd-find, fzf, tmux, tree, htop, bat, shellcheck, lsb-release, flatpak
 - **Shell**: zsh + zsh-autosuggestions + zsh-syntax-highlighting
-- **Python**: python3-venv, python3-pip, pipx
+- **Python**: python3, python3-venv, python3-pip, pipx
 - **Security/power**: UFW firewall, unattended-upgrades, TLP
 - **Docker Engine**: official repo with buildx + compose plugin
 - **Dev tools**: GitHub CLI (gh), Azure CLI (az), VS Code, Google Chrome (amd64 only)

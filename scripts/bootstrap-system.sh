@@ -49,6 +49,7 @@ sudo apt install -y \
   bat \
   shellcheck \
   pipx \
+  python3 \
   python3-pip \
   python3-venv \
   flatpak \
