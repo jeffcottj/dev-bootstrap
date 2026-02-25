@@ -47,7 +47,7 @@ check_symlink() {
 echo "=== Command checks ==="
 
 # apt packages
-apt_commands=(git curl wget jq rg fdfind fzf tmux tree htop batcat make zsh python3 pipx docker gh az code flatpak)
+apt_commands=(git curl wget jq rg fdfind fzf tmux tree htop batcat make zsh python3 pipx docker gh az code lsb_release flatpak)
 if [[ "$ARCH" == "amd64" ]]; then
   apt_commands+=(google-chrome-stable)
 fi

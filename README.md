@@ -8,7 +8,7 @@ Everything follows a "latest stable" model: nothing is version-pinned, and the s
 
 ### System-level (requires sudo)
 
-- **Base packages**: build-essential, curl, wget, git, jq, ripgrep, fd-find, fzf, tmux, tree, htop, bat, flatpak
+- **Base packages**: build-essential, curl, wget, git, jq, ripgrep, fd-find, fzf, tmux, tree, htop, bat, lsb-release, flatpak
 - **Shell**: zsh + zsh-autosuggestions + zsh-syntax-highlighting
 - **Python**: python3-venv, python3-pip, pipx
 - **Security/power**: UFW firewall, unattended-upgrades, TLP
