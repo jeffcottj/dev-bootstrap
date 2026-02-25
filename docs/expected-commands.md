@@ -17,6 +17,7 @@ Every command that should be available after a full bootstrap. Used by `scripts/
 | `tree` | tree |
 | `htop` | htop |
 | `batcat` | bat |
+| `shellcheck` | shellcheck |
 | `make` | build-essential |
 | `zsh` | zsh |
 | `python3` | python3 |
