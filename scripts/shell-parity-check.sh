@@ -5,7 +5,6 @@ set -euo pipefail
 # the same user-installed commands and share ~/.local/bin on PATH.
 
 # Ensure user-installed tools are on PATH (not inherited in CI or fresh shells)
-[[ -d "$HOME/.bun/bin" ]] && export PATH="$HOME/.bun/bin:$PATH"
 [[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
 errors=0
@@ -22,21 +21,10 @@ for shell in bash zsh; do
 done
 
 echo ""
-echo "=== PATH check: ~/.bun/bin ==="
-for shell in bash zsh; do
-  # shellcheck disable=SC2016 # $PATH must expand inside the spawned shell, not here
-  if $shell -lc 'echo "$PATH"' 2>/dev/null | tr ':' '\n' | grep -qx "$HOME/.bun/bin"; then
-    echo "  OK   $shell login shell has ~/.bun/bin on PATH"
-  else
-    echo "  WARN $shell login shell is missing ~/.bun/bin on PATH"
-  fi
-done
-
-echo ""
 echo "=== Command resolution parity ==="
 
 # Commands that install to user-writable locations (~/.local/bin)
-user_commands=(poetry ruff pre-commit opencode bun)
+user_commands=(poetry ruff pre-commit opencode)
 
 for cmd in "${user_commands[@]}"; do
   bash_path="$(bash -lc "command -v $cmd" 2>/dev/null || true)"

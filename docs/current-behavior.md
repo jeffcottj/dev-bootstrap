@@ -20,18 +20,17 @@ What `dev-bootstrap` does today on a fresh Ubuntu 24.04 install.
 7. Adds Microsoft apt repo (key + sources for Azure CLI and VS Code)
 8. Adds Google Chrome apt repo (amd64 only)
 9. Installs: `docker-ce`, `docker-ce-cli`, `containerd.io`, `docker-buildx-plugin`, `docker-compose-plugin`, `azure-cli`, `code`, `gh`, and `google-chrome-stable` (amd64 only)
-10. Enables Docker services (`containerd`, `docker`, `docker.socket`)
-11. Adds current user to `docker` group
+10. Installs/updates Ghostty terminal emulator via `ghostty-ubuntu` installer script
+11. Enables Docker services (`containerd`, `docker`, `docker.socket`)
+12. Adds current user to `docker` group
 
 ## User-level (no sudo)
 
 1. Runs `pipx ensurepath`
 2. Installs via pipx: `poetry`, `ruff`, `pre-commit`
 3. Installs OpenCode to `~/.local/bin`
-4. Installs Bun (JavaScript runtime required by oh-my-opencode)
-5. Installs oh-my-opencode via `bunx oh-my-opencode install`
-6. Smoke-tests OpenCode (`opencode --version`)
-7. Symlinks dotfiles:
+4. Smoke-tests OpenCode (`opencode --version`)
+5. Symlinks dotfiles:
    - `zsh/zshrc` -> `~/.zshrc`
    - `git/gitconfig` -> `~/.gitconfig`
 

@@ -8,7 +8,6 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 # Ensure user-installed tools are on PATH (not inherited in CI or fresh shells)
-[[ -d "$HOME/.bun/bin" ]] && export PATH="$HOME/.bun/bin:$PATH"
 [[ -d "$HOME/.local/bin" ]] && export PATH="$HOME/.local/bin:$PATH"
 
 errors=0
@@ -51,6 +50,7 @@ apt_commands=(git curl wget jq rg fdfind fzf tmux tree htop batcat make zsh pyth
 if [[ "$ARCH" == "amd64" ]]; then
   apt_commands+=(google-chrome-stable)
 fi
+apt_commands+=(ghostty)
 
 for cmd in "${apt_commands[@]}"; do
   check_command "$cmd"
@@ -63,17 +63,8 @@ done
 
 # direct installs
 check_command opencode
-check_command bun
-
 echo ""
-echo "=== OpenCode + oh-my-opencode checks ==="
-
-# OMO installed check — look for config files, not bunx (which runs packages ephemerally)
-if [[ -d "$HOME/.config/opencode/agents" ]]; then
-  echo "  OK   oh-my-opencode (config found in ~/.config/opencode/)"
-else
-  echo "  WARN oh-my-opencode — not detected (run: bunx oh-my-opencode install)"
-fi
+echo "=== OpenCode checks ==="
 
 # Auth configured check
 if opencode auth list &>/dev/null 2>&1; then

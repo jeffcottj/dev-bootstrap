@@ -23,7 +23,7 @@ Describe what you want to build in plain English. OpenCode will write the code f
 
 - **Plan first**: Say "plan how to build X" before "build it"
 - **Resume work**: Run `opencode` again to continue where you left off
-- **Updates are automatic**: oh-my-opencode checks for updates when you start a session
+- **Keep tools updated**: Re-run `~/repos/dev-bootstrap/scripts/bootstrap-ubuntu-24.04.sh` anytime
 
 ## 4. If something goes wrong
 

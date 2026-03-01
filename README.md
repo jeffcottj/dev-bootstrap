@@ -1,6 +1,6 @@
 # dev-bootstrap (Ubuntu 24.04)
 
-One-command setup for the most effective vibe coding environment available on Ubuntu 24.04. Puts non-developers behind the wheel of [OpenCode](https://opencode.ai) + [oh-my-opencode](https://github.com/nichochar/oh-my-opencode) for rapid natural language prototyping — no prior dev experience required.
+One-command setup for the most effective vibe coding environment available on Ubuntu 24.04. Puts non-developers behind the wheel of [OpenCode](https://opencode.ai) for rapid natural language prototyping — no prior dev experience required.
 
 Everything follows a "latest stable" model: nothing is version-pinned, and the specific tools and plugins included are subject to change as better options become available.
 
@@ -13,13 +13,12 @@ Everything follows a "latest stable" model: nothing is version-pinned, and the s
 - **Python**: python3-venv, python3-pip, pipx
 - **Security/power**: UFW firewall, unattended-upgrades, TLP
 - **Docker Engine**: official repo with buildx + compose plugin
-- **Dev tools**: GitHub CLI (gh), Azure CLI (az), VS Code, Google Chrome (amd64 only)
+- **Dev tools**: GitHub CLI (gh), Azure CLI (az), VS Code, Ghostty terminal emulator, Google Chrome (amd64 only)
 
 ### User-level (no sudo)
 
 - **pipx tools**: poetry, ruff, pre-commit
-- **Bun**: JavaScript runtime used by oh-my-opencode
-- **OpenCode + oh-my-opencode**: OpenCode installed to `~/.local/bin` (smoke-tested during bootstrap), oh-my-opencode provides batteries-included agents, MCPs, and hooks
+- **OpenCode**: installed to `~/.local/bin` (smoke-tested during bootstrap)
 - **Dotfiles**: zprofile, zshrc, gitconfig symlinked from this repo
 - **Git identity**: interactive prompt writes `~/.gitconfig.local` (skipped if file exists)
 - **Default shell**: changed to zsh via `chsh`
@@ -107,7 +106,7 @@ Two verification scripts are provided:
 
 - **Additional apt packages**: add them to `scripts/bootstrap-system.sh`
 - **Additional pipx tools**: add them to `scripts/bootstrap-user.sh`
-- **OpenCode plugins**: oh-my-opencode manages agents, MCPs, and hooks — run `bunx oh-my-opencode` to reconfigure
+- **OpenCode setup**: run `opencode auth login` to configure provider credentials
 - **Zsh config**: edit `zsh/zshrc` (aliases, prompt, plugins)
 - **Git config**: edit `git/gitconfig` for shared settings; use `~/.gitconfig.local` for per-machine settings (identity, signing key)
 

@@ -12,12 +12,11 @@ zsh  login:  ~/.zprofile (sources ~/.profile)  ->  ~/.zshrc
 - `~/.profile` is the single source of truth for user PATH additions
 - Ubuntu 24.04's default `~/.profile` already adds `$HOME/.local/bin` to PATH
 - `zsh/zprofile` sources `~/.profile` via `emulate sh -c` so zsh login shells inherit the same PATH
-- `zsh/zshrc` also adds `~/.local/bin` and `~/.bun/bin` to PATH — most terminal emulators open non-login shells where `~/.zprofile` is never sourced
+- `zsh/zshrc` also adds `~/.local/bin` to PATH — most terminal emulators open non-login shells where `~/.zprofile` is never sourced
 
 ## What lands where
 
 - `~/.local/bin`: pipx-installed tools (`poetry`, `ruff`, `pre-commit`), OpenCode
-- `~/.bun/bin`: Bun runtime (used by oh-my-opencode)
 
 ## Verification
 
@@ -28,7 +27,7 @@ bash -lc "command -v <cmd>"
 zsh  -lc "command -v <cmd>"
 ```
 
-Both must succeed for every command listed in `docs/expected-commands.md` that installs to a user-writable location (`~/.local/bin`, `~/.bun/bin`).
+Both must succeed for every command listed in `docs/expected-commands.md` that installs to a user-writable location (`~/.local/bin`).
 
 ## Why this matters
 

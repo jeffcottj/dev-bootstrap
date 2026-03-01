@@ -41,11 +41,10 @@ Every command that should be available after a full bootstrap. Used by `scripts/
 | Command | Install method |
 |---------|---------------|
 | `opencode` | opencode.ai install script -> `~/.local/bin` (smoke-tested during bootstrap) |
-| `bun` | bun.sh install script -> `~/.bun/bin` |
+| `ghostty` | ghostty-ubuntu installer script |
 
 ## Verified but not required (warnings only)
 
 | Check | How |
 |-------|-----|
-| oh-my-opencode | `bunx oh-my-opencode --version` |
 | OpenCode auth | `opencode auth list` |
