@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Repo Does
 
-Bootstrap scripts for an Ubuntu 24.04 dev workstation. Installs system packages, Docker, dev tools (gh, az, code), pipx tools (poetry, ruff, pre-commit), OpenCode with oh-my-opencode, and configures zsh with dotfile symlinks. Targets physical machines and CI — not containers in production.
+Bootstrap scripts for an Ubuntu 24.04 dev workstation. Installs system packages, Docker, dev tools (gh, az, code, ghostty), pipx tools (poetry, ruff, pre-commit), OpenCode, and configures zsh with dotfile symlinks. Targets physical machines and CI — not containers in production.
 
 ## Common Commands
 
@@ -32,11 +32,11 @@ bash -n scripts/*.sh
 **Two-phase bootstrap** orchestrated by `scripts/bootstrap-ubuntu-24.04.sh`:
 
 1. **`bootstrap-system.sh`** — apt packages, repo keys, Docker, services, UFW, TLP (requires sudo, refuses root)
-2. **`bootstrap-user.sh`** — pipx tools, Bun, OpenCode + oh-my-opencode (with smoke test), dotfile symlinks, git identity prompt, `chsh` to zsh
+2. **`bootstrap-user.sh`** — pipx tools, OpenCode (with smoke test), dotfile symlinks, git identity prompt, `chsh` to zsh
 
 **Dotfile symlink flow** (`apply-dotfiles.sh`): repo files are symlinked into `~/`, existing non-symlink files are backed up with timestamps. Symlinks are idempotent — re-running skips correct links.
 
-**Shell parity**: `zsh/zprofile` sources `~/.profile` via `emulate sh -c` so both bash and zsh login shells get `~/.local/bin` on PATH. `zsh/zshrc` also adds `~/.local/bin` and `~/.bun/bin` to PATH for non-login shells (most GUI terminal emulators).
+**Shell parity**: `zsh/zprofile` sources `~/.profile` via `emulate sh -c` so both bash and zsh login shells get `~/.local/bin` on PATH. `zsh/zshrc` also adds `~/.local/bin` to PATH for non-login shells (most GUI terminal emulators).
 
 **Getting started**: `docs/getting-started.md` provides a jargon-free guide for non-developers — API key setup, launching OpenCode, and basic tips.
 

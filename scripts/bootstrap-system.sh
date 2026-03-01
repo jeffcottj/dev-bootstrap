@@ -154,6 +154,9 @@ fi
 
 sudo apt install -y "${packages[@]}"
 
+echo "==> Installing/Updating Ghostty"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh)"
+
 echo "==> Enabling Docker services"
 sudo systemctl enable --now containerd
 sudo systemctl enable --now docker
